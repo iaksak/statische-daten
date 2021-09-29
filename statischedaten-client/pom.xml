@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.gefa</groupId>
+        <artifactId>common-api</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../common-api/pom.xml</relativePath> <!-- lookup parent from repository -->
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>statischedaten-client</artifactId>
+
+    <dependencies>
+
+        <!-- ====================================================== -->
+        <!-- dependencies are needed for the client being generated -->
+        <!-- ====================================================== -->
+
+        <!-- Swagger annotations -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+
+        <!-- Jackson dependencies for JSON mapping -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+        </dependency>
+
+        <!-- javax @Nullable annotation dependency not available with java 11 -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- javax.ws.rs dependencies GenericType and ContextResolver -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- REST Client generation -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>5.1.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+
+                            <generatorName>java</generatorName>
+                            <library>native</library>
+
+                            <configOptions>
+                                <dateLibrary>java8</dateLibrary>
+                            </configOptions>
+
+                            <inputSpec>${project.basedir}/../statischedaten-impl/target/openapi.json</inputSpec>
+
+                            <apiPackage>com.gefa.statischedaten.client.api</apiPackage>
+                            <invokerPackage>com.gefa.statischedaten.client.invoker</invokerPackage>
+                            <modelPackage>com.gefa.statischedaten.client.api.model</modelPackage>
+
+                            <!-- Source generation only -->
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+                            <generateModelDocumentation>false</generateModelDocumentation>
+                            <generateApiDocumentation>false</generateApiDocumentation>
+                            <supportingFilesToGenerate>
+                                AbstractOpenApiSchema.java,ApiClient.java,ApiException.java,ApiResponse.java,JSON.java,Pair.java,RFC3339DateFormat.java
+                            </supportingFilesToGenerate>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

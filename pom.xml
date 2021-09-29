@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.gefa</groupId>
+    <artifactId>statischedaten-microservice</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>Microservice für statische Daten, OpenAPI konform</description>
+
+    <modules>
+        <module>common-api</module>
+        <module>statischedaten-api</module>
+        <module>statischedaten-impl</module>
+        <module>statischedaten-client</module>
+        <module>statischedaten-integrationtest</module>
+    </modules>
+
+</project>
