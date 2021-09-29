@@ -18,22 +18,22 @@ public class EbenentypController implements EbenentypApi {
 
     private static final String MESSAGE_NULL_ID = "null is not a valid id";
     private static final String MESSAGE_NULL_USER = "null is not a valid user object";
-    private Map<Integer, Ebenentyp> examples = new HashMap<>();
+    private Map<Integer, Ebenentyp> ebenentypen = new HashMap<>();
 
     public EbenentypController() {
-        save (new Ebenentyp(++LAST_ID, "JBeh", "Justizbehörde"));
-        save (new Ebenentyp(++LAST_ID, "Abt", "Abteilung"));
-        save (new Ebenentyp(++LAST_ID, "OE", "Organisationseinheit"));
+        save (new Ebenentyp("JBeh", "Justizbehörde"));
+        save (new Ebenentyp("Abt", "Abteilung"));
+        save (new Ebenentyp("OE", "Organisationseinheit"));
     }
 
     @Override
     public List<Ebenentyp> findAll() {
-        return new ArrayList<>(examples.values());
+        return new ArrayList<>(ebenentypen.values());
     }
 
     @Override
     public Ebenentyp findById(Integer id) {
-        return examples.get(id);
+        return ebenentypen.get(id);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class EbenentypController implements EbenentypApi {
         }
 
         example.setId(++LAST_ID);
-        examples.put(example.getId(), example);
+        ebenentypen.put(example.getId(), example);
 
         return example;
     }
@@ -59,7 +59,7 @@ public class EbenentypController implements EbenentypApi {
             throw new IllegalArgumentException(MESSAGE_NULL_USER);
         }
 
-        examples.put(id, example);
+        ebenentypen.put(id, example);
 
         return example;
     }
@@ -71,6 +71,6 @@ public class EbenentypController implements EbenentypApi {
             throw new IllegalArgumentException(MESSAGE_NULL_ID);
         }
 
-        examples.remove(id);
+        ebenentypen.remove(id);
     }
 }

@@ -1,27 +1,29 @@
 package com.gefa.statischedaten.model;
 
 /*
- * @created 29/09/2021 2:58 AM
+ * @created 20/09/2021 10:29 PM
  * @author Ivan Aksak aksak@iname.com
  */
-public class Ebenentyp {
-
+public class Justizbehoerdentyp {
     private Integer id;
     private String name;
-    private String beschreibung;
+    private String kurzbezeichnung;
     private String anzeigereihenfolge;
 
-    public Ebenentyp() {
+
+    public Justizbehoerdentyp() {
     }
 
-    public Ebenentyp(String aName, String aBeschreibung) {
-        this.name = aName;
-        this.beschreibung = aBeschreibung;
+    public Justizbehoerdentyp(String aName, String akurzbezeichnung) {
+        this.setName(aName);
+        this.setKurzbezeichnung(akurzbezeichnung);
     }
+
 
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -29,20 +31,23 @@ public class Ebenentyp {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getBeschreibung() {
-        return beschreibung;
+    public String getKurzbezeichnung() {
+        return kurzbezeichnung;
     }
-    public void setBeschreibung(String beschreibung) {
-        this.beschreibung = beschreibung;
+
+    public void setKurzbezeichnung(String kurzbezeichnung) {
+        this.kurzbezeichnung = kurzbezeichnung;
     }
 
     public String getAnzeigereihenfolge() {
         return anzeigereihenfolge;
     }
+
     public void setAnzeigereihenfolge(String anzeigereihenfolge) {
         this.anzeigereihenfolge = anzeigereihenfolge;
     }

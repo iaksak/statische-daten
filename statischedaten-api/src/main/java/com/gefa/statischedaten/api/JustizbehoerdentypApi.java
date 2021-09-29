@@ -1,6 +1,6 @@
 package com.gefa.statischedaten.api;
 
-import com.gefa.statischedaten.model.Ebenentyp;
+import com.gefa.statischedaten.model.Justizbehoerdentyp;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /*
- * @created 29/09/2021 3:07 AM
+ * @created 29/09/2021 2:53 PM
  * @author Ivan Aksak aksak@iname.com
  */
-@RequestMapping("/api/ebenentyp")
-@Tag(name = "Ebenentyp API", description = "Ebenentyp (ENUM_10) API")
-public interface EbenentypApi {
+@RequestMapping("/api/justizbehoerdentyp")
+@Tag(name = "Justizbehoerdentyp API", description = "Justizbehoerdentyp (ENUM_24) API")
+public interface JustizbehoerdentypApi {
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<Ebenentyp> findAll();
+    List<Justizbehoerdentyp> findAll();
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    Ebenentyp findById(@PathVariable Integer id);
+    Justizbehoerdentyp findById(@PathVariable Integer id);
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    Ebenentyp save(@RequestBody Ebenentyp example);
+    Justizbehoerdentyp save(@RequestBody Justizbehoerdentyp justizbehoerdentyp);
 
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    Ebenentyp update(@PathVariable Integer id, @RequestBody Ebenentyp example);
+    Justizbehoerdentyp update(@PathVariable Integer id, @RequestBody Justizbehoerdentyp justizbehoerdentyp);
 
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
